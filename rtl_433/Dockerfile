@@ -1,6 +1,5 @@
 ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base:3.16
 FROM $BUILD_FROM as builder
-MAINTAINER pbkhrv@pm.me
 
 ENV LANG C.UTF-8
 
@@ -9,8 +8,17 @@ RUN apk add --no-cache --virtual .buildDeps \
     build-base \
     libusb-dev \
     librtlsdr-dev \
-    cmake \
-    git
+    cmake
+RUN apk add --no-cache git g++ swig
+
+
+RUN git clone https://github.com/pothosware/SoapySDR.git
+WORKDIR ./SoapySDR
+RUN mkdir build
+WORKDIR ./build
+RUN cmake ..
+RUN make -j 4
+RUN make install
 
 WORKDIR /build
 
