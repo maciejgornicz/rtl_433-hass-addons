@@ -18,7 +18,7 @@ RUN mkdir build
 WORKDIR ./build
 RUN cmake ..
 RUN make -j 4
-RUN make install
+RUN make DESTDIR=/build/root/ install
 
 WORKDIR /build
 
