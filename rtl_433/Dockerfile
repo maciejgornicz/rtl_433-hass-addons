@@ -39,10 +39,11 @@ ARG BUILD_FROM=ghcr.io/home-assistant/amd64-base:3.16
 FROM $BUILD_FROM
 
 ENV LANG C.UTF-8
-
+RUN apk update
 RUN apk add --no-cache libusb \
     librtlsdr \
-    sed rtl_433 soapy-sdr
+    sed rtl_433
+RUN apk add soapy-sdr --repository=https://dl-cdn.alpinelinux.org/alpine/edge/testing
 WORKDIR /root
 # COPY --from=builder /build/root/ /
 
