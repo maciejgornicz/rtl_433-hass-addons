@@ -1,6 +1,6 @@
 {
   "name": "rtl_433mg",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "slug": "rtl433mg",
   "description": "Receive wireless sensor data via an SDR dongle and rtl_433",
   "url": "https://github.com/maciejgornicz/rtl_433-hass-addons/blob/main/rtl_433",
